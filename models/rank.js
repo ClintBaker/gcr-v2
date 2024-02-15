@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 const rankSchema = new mongoose.Schema({
   courseName: String,
@@ -9,18 +9,18 @@ const rankSchema = new mongoose.Schema({
   views: Number,
   service: Number,
   score: Number,
-});
+})
 
 // middleware pre save
-rankSchema.pre("save", function (next) {
+rankSchema.pre('save', function (next) {
   this.score =
     this.greenQuality +
     this.proShop +
     this.weather +
     this.difficulty +
     this.views +
-    this.service;
-  next();
-});
+    this.service
+  next()
+})
 
-export const Rank = mongoose.model("Rank", rankSchema);
+export const Rank = mongoose.model('Rank', rankSchema)

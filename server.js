@@ -10,7 +10,7 @@ const app = express()
 // call function to connect to DB
 main().catch((err) => console.log(err))
 
-// Function to connect
+// Function to connect to db
 async function main() {
   await mongoose.connect(process.env.MONGODB_CONNECTION_STRING)
 }
@@ -18,7 +18,6 @@ async function main() {
 // middleware
 app.use(morgan('dev'))
 app.use(express.json())
-// app.use(cors())
 
 // router for ranks
 app.use('/rank', rankRouter)
@@ -28,4 +27,5 @@ app.use((err, req, res, next) => {
   res.status(500).send({ message: 'ERROR', error: err })
 })
 
-app.listen(9000, () => console.log(`App is listening at http://localhost:9000`))
+const PORT = process.env.PORT || 9000
+app.listen(PORT, () => console.log(`App is running on port ${PORT}`))

@@ -1,0 +1,15 @@
+TODO:
+1. Authentication
+    - Define user model
+    - Associate user with ranks
+    - Protect routes with no Authentication
+2. Courses
+    - Define course model 
+    - Associate with ranks 
+3. Routing
+    - Create routes for auth, ranks, courses 
+4. Views
+    - Protect views 
+    - Create view for all courses (with composite ranks)
+
+DONE:
