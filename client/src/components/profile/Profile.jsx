@@ -1,19 +1,22 @@
 import { useContext, useEffect } from 'react'
 import { UserContext } from '../../context/UserProvider'
-import RankCard from '../RankCard'
+import RankCard from './RankCard'
+import './profile.css'
 
 export default function Profile() {
   // user context
-  const { getRanks, ranks } = useContext(UserContext)
+  const { getRanks, ranks, user } = useContext(UserContext)
+  // onload get ranks
   useEffect(() => {
     getRanks()
   }, [])
+
   return (
-    <div>
-      <h2>Welcome, user</h2>
+    <div className="center">
+      <h2 style={{ marginBottom: '25px' }}>Welcome, {user.username}</h2>
       <div className="ranks--container">
-        <div className="heading">
-          <h2>My Ranks</h2>
+        <div className="heading center">
+          <h3>My Ranks</h3>
         </div>
         <div className="ranks">
           {ranks.map((rank) => (

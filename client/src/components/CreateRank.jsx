@@ -1,31 +1,31 @@
-import { useState } from "react";
-import "./css/create.css";
-import { useNavigate } from "react-router-dom";
-import { createRank } from "../api/rank";
+import { useState } from 'react'
+import './css/create.css'
+import { useNavigate } from 'react-router-dom'
+import { createRank } from '../api/rank'
 
 export default function CreateRank() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
-    courseName: "",
+    courseName: '',
     greenQuality: 5,
     proShop: 5,
     weather: 5,
     difficulty: 5,
     views: 5,
     service: 5,
-  });
+  })
 
   function handleChange(e) {
-    const { name, value } = e.target;
+    const { name, value } = e.target
 
-    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }))
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
 
-    createRank(navigate, formData);
+    createRank(navigate, formData)
   }
 
   return (
@@ -114,5 +114,5 @@ export default function CreateRank() {
         <button className="submit">Submit</button>
       </form>
     </div>
-  );
+  )
 }

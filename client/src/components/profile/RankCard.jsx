@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import './css/RankCard.css'
+import '../css/RankCard.css'
 
 export default function RankCard({ rank }) {
   const navigate = useNavigate()

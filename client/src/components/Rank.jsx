@@ -1,46 +1,46 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { deleteRank, editRank, getRankById } from "../api/rank";
-import "./css/Rank.css";
+import { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { deleteRank, editRank, getRankById } from '../api/rank'
+import './css/Rank.css'
 
 export default function Rank() {
-  const { id } = useParams();
+  const { id } = useParams()
 
-  const [rank, setRank] = useState("loading");
-  const [toggleEdit, setToggleEdit] = useState(false);
-  const [formData, setFormData] = useState({});
+  const [rank, setRank] = useState('loading')
+  const [toggleEdit, setToggleEdit] = useState(false)
+  const [formData, setFormData] = useState({})
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   useEffect(() => {
     // on load get rank
-    getRankById(setRank, setFormData, id);
-  }, []);
+    getRankById(setRank, setFormData, id)
+  }, [])
 
   function handleDelete() {
-    deleteRank(navigate, id);
+    deleteRank(navigate, id)
   }
 
   function handleEdit() {
-    setFormData(rank);
-    setToggleEdit((prevToggleEdit) => !prevToggleEdit);
+    setFormData(rank)
+    setToggleEdit((prevToggleEdit) => !prevToggleEdit)
   }
 
   function handleSubmit() {
-    editRank(setRank, id, formData, setFormData);
-    setToggleEdit(false);
+    editRank(setRank, id, formData, setFormData)
+    setToggleEdit(false)
   }
 
   function handleChange(e) {
-    const { name, value } = e.target;
+    const { name, value } = e.target
 
-    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }))
   }
 
   return (
     <>
       {!rank && <div>404 - Unable to find Rank</div>}
-      {rank && rank !== "loading" && !toggleEdit && (
+      {rank && rank !== 'loading' && !toggleEdit && (
         <div className="rank--main">
           <h2>{rank.courseName}</h2>
           <div className="rank--btns">
@@ -59,7 +59,7 @@ export default function Rank() {
         </div>
       )}
 
-      {rank && rank !== "loading" && toggleEdit && (
+      {rank && rank !== 'loading' && toggleEdit && (
         <div className="rank--main">
           <h2>{rank.courseName}</h2>
           <div className="rank--btns">
@@ -144,5 +144,5 @@ export default function Rank() {
         </div>
       )}
     </>
-  );
+  )
 }
