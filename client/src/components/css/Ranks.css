@@ -1,0 +1,35 @@
+.ranks--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.heading {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.ranks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 5px 50px;
+  width: 275px;
+}
+
+@media only screen and (min-width: 600px) {
+  body {
+    .ranks {
+      width: 550px;
+    }
+  }
+}
+
+@media only screen and (min-width: 850px) {
+  body {
+    .ranks {
+      width: 820px;
+    }
+  }
+}

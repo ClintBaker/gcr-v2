@@ -1,0 +1,29 @@
+.rank--card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 30px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  background-color: white;
+  border-radius: 3px;
+  margin: 10px;
+  width: 250px;
+  cursor: pointer;
+  transition: 50ms linear;
+}
+
+.rank--card:hover {
+  background-color: var(--green);
+}
+
+.rank--card * {
+  margin: 1.5px;
+}
+
+.rank--card h4 {
+  color: var(--green);
+}
+
+.rank--card:hover h4 {
+  color: black;
+}
