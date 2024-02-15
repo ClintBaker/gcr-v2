@@ -1,9 +1,10 @@
 import mongoose, { Schema } from 'mongoose'
 import { User } from './user.js'
+import { Course } from './course.js'
 
 const rankSchema = new mongoose.Schema({
   userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  course: String,
+  course: { type: Schema.Types.ObjectId, ref: 'Course', required: true },
   greenQuality: Number,
   proShop: Number,
   weather: Number,
