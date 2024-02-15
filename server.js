@@ -6,6 +6,7 @@ import 'dotenv/config'
 
 import authRouter from './routes/auth.js'
 import rankRouter from './routes/rank.js'
+import courseRouter from './routes/course.js'
 
 const app = express()
 
@@ -31,6 +32,7 @@ app.use(
 app.use('/app/auth', authRouter)
 // protected routes
 app.use('/app/api/rank', rankRouter)
+app.use('/app/api/course', courseRouter)
 
 // error handling
 app.use((err, req, res, next) => {

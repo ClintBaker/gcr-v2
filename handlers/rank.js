@@ -1,3 +1,4 @@
+import { Course } from '../models/course.js'
 import { Rank } from '../models/rank.js'
 
 export const getRanks = async (req, res, next) => {
@@ -33,6 +34,11 @@ export const createRank = async (req, res, next) => {
   try {
     // create rank and associate with userId
     const rank = await Rank.create({ ...req.body, userId: req.auth._id })
+    // locate the course to associate
+    const rankCourse = await Course.findOne({ _id: req.body.courseId })
+    // update composite numbers for course
+    const update = await rankCourse.updateTotals()
+
     res.status(200).send({ message: 'Successfully created rank', rank })
   } catch (e) {
     return next(e.message)
@@ -58,6 +64,11 @@ export const editRank = async (req, res, next) => {
       rank[key] = req.body[key]
     })
 
+    // locate the course to associate
+    const rankCourse = await Course.findOne({ _id: rank.courseId })
+    // update composite numbers for course
+    const update = await rankCourse.updateTotals()
+
     // return the updatedRank
     const updatedRank = await rank.save()
     res
@@ -80,6 +91,11 @@ export const deleteRank = async (req, res, next) => {
       res.status(404)
       return next(new Error('Resource not found'))
     }
+
+    // locate the course to associate
+    const rankCourse = await Course.findOne({ _id: rank.courseId })
+    // update composite numbers for course
+    const update = await rankCourse.updateTotals()
     // otherwise return success
     res.status(200).send({ message: 'Successfully deleted rank', rank })
   } catch (e) {

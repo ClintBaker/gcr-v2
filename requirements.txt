@@ -4,7 +4,7 @@ TODO:
     - //DONE Protect routes that require auth
     - //DONE Associate user with ranks
 2. Courses
-    - Define course model 
+    - //DONE Define course model 
     - Associate with ranks 
 3. Routing
     - Create routes for auth, ranks, courses 
