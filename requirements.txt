@@ -1,16 +1,16 @@
 TODO:
-1. Authentication
-    - //DONE Define user model
-    - //DONE Protect routes that require auth
-    - //DONE Associate user with ranks
-2. Courses
-    - //DONE Define course model 
-    - //DONE Associate with ranks 
-    - Create flow for CRUD courses
-3. Routing
-    - Create routes for auth, ranks, courses 
 4. Views
     - Protect views 
     - Create view for all courses (with composite ranks)
 
 DONE:
+1. //DONE Authentication
+    - //DONE Define user model
+    - //DONE Protect routes that require auth
+    - //DONE Associate user with ranks
+2. //DONE Courses
+    - //DONE Define course model 
+    - //DONE Associate with ranks 
+    - //DONE Create flow for CRUD courses
+3. //DONE Routing
+    - //DONE Create routes for auth, ranks, courses 

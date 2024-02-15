@@ -10,6 +10,7 @@ const courseSchema = new mongoose.Schema({
   difficulty: { type: Number, default: 0 },
   views: { type: Number, default: 0 },
   service: { type: Number, default: 0 },
+  totalRanks: { type: Number, default: 0 },
   score: { type: Number, default: 0 },
 })
 
@@ -18,7 +19,6 @@ courseSchema.methods.updateTotals = async function () {
   try {
     //   define an array of all ranks for this course
     const ranks = await Rank.find({ courseId: this._id })
-    console.log(ranks)
     //  define composite values
     let cv = {
       greenQuality: 0,
@@ -54,6 +54,7 @@ courseSchema.methods.updateTotals = async function () {
     this.difficulty = cv.difficulty
     this.views = cv.views
     this.service = cv.service
+    this.totalRanks = ranks.length
     this.score = cv.score
     //   move along
     try {
