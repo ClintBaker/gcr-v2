@@ -1,4 +1,7 @@
+import { Route, Routes } from 'react-router-dom'
 import Auth from './components/auth/Auth'
+import Profile from './components/Profile'
+import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
   return (
@@ -13,6 +16,15 @@ function App() {
       <main className="main">
         <Routes>
           <Route path="/" element={<Auth />} />
+          <Route
+            path="profile"
+            element={
+              <ProtectedRoute token={undefined} redirect="/">
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+
           {/* <Route
             path="/"
             element={<Ranks ranks={ranks} setRanks={setRanks} />}
