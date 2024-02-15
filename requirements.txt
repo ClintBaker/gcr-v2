@@ -1,7 +1,11 @@
 TODO:
-4. Views
+4. CLIENT
     - Protect views 
-    - Create view for all courses (with composite ranks)
+        - Profile (create ranks, my ranks)
+        - Courses (all courses)
+        - Logout
+    - Provide a courseId for ranks
+        - Make sure everything works smoothly with the new API
 
 DONE:
 1. //DONE Authentication
