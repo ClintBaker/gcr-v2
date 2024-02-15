@@ -3,7 +3,7 @@ import { User } from './user.js'
 
 const rankSchema = new mongoose.Schema({
   userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  courseName: String,
+  course: String,
   greenQuality: Number,
   proShop: Number,
   weather: Number,
