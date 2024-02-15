@@ -1,7 +1,9 @@
 import express from 'express'
 import morgan from 'morgan'
 import mongoose from 'mongoose'
+import { expressjwt } from 'express-jwt'
 import 'dotenv/config'
+
 import authRouter from './routes/auth.js'
 import rankRouter from './routes/rank.js'
 
@@ -19,8 +21,15 @@ async function main() {
 app.use(morgan('dev'))
 app.use(express.json())
 
-// routers
+// protect
+app.use(
+  '/app/api',
+  expressjwt({ secret: process.env.JWT_SECRET, algorithms: ['HS256'] })
+)
+
+// auth routes
 app.use('/app/auth', authRouter)
+// protected routes
 app.use('/app/api/rank', rankRouter)
 
 // error handling

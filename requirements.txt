@@ -1,8 +1,8 @@
 TODO:
 1. Authentication
     - //DONE Define user model
+    - //DONE Protect routes that require auth
     - Associate user with ranks
-    - Protect routes with no Authentication
 2. Courses
     - Define course model 
     - Associate with ranks 
