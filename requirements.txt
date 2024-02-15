@@ -5,7 +5,8 @@ TODO:
     - //DONE Associate user with ranks
 2. Courses
     - //DONE Define course model 
-    - Associate with ranks 
+    - //DONE Associate with ranks 
+    - Create flow for CRUD courses
 3. Routing
     - Create routes for auth, ranks, courses 
 4. Views

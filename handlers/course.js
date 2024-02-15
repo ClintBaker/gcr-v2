@@ -9,3 +9,15 @@ export const createCourse = async (req, res, next) => {
     return next(e.message)
   }
 }
+
+export const getCourses = async (req, res, next) => {
+  try {
+    // get all courses
+    const courses = await Course.find()
+    // return value
+    res.status(200).send({ message: 'SUCCESS', courses })
+  } catch (e) {
+    res.status(500)
+    return next(e.message)
+  }
+}
