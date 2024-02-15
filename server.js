@@ -1,9 +1,9 @@
 import express from 'express'
-import rankRouter from './router.js'
 import morgan from 'morgan'
 import mongoose from 'mongoose'
-// import cors from 'cors'
 import 'dotenv/config'
+import authRouter from './routes/auth.js'
+import rankRouter from './routes/rank.js'
 
 const app = express()
 
@@ -19,12 +19,14 @@ async function main() {
 app.use(morgan('dev'))
 app.use(express.json())
 
-// router for ranks
-app.use('/rank', rankRouter)
+// routers
+app.use('/app/auth', authRouter)
+app.use('/app/api/rank', rankRouter)
 
 // error handling
 app.use((err, req, res, next) => {
-  res.status(500).send({ message: 'ERROR', error: err })
+  console.log(err)
+  res.send({ message: 'ERROR', error: err.message })
 })
 
 const PORT = process.env.PORT || 9000

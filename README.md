@@ -7,3 +7,4 @@ Rank your favorite golf courses!
 To run locally, make sure you have a .env file with:
 
 - MONGODB_CONNECTION_STRING
+- JWT_SECRET
