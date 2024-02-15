@@ -1,9 +1,9 @@
 TODO:
 4. CLIENT
-    - Protect views 
-        - Profile (create ranks, my ranks)
+    - //DONE Protect views 
+        - Profile - MY RANKS
         - Courses (all courses)
-        - Logout
+        - //DONE Logout
     - Provide a courseId for ranks
         - Make sure everything works smoothly with the new API
 

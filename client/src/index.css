@@ -27,6 +27,12 @@ body {
   background: var(--white);
 }
 
+.nav-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .nav div * {
   margin: 1px 12px;
   text-decoration: none;

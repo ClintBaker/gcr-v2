@@ -65,8 +65,18 @@ export default function UserProvider(props) {
     localStorage.removeItem('user')
   }
 
+  async function getRanks() {
+    const ranks = await userAxios.get('/app/api/rank')
+    setUserState((prevUserState) => ({
+      ...prevUserState,
+      ranks: ranks.data.ranks,
+    }))
+  }
+
   return (
-    <UserContext.Provider value={{ ...userState, signup, signin, logout }}>
+    <UserContext.Provider
+      value={{ ...userState, signup, signin, logout, getRanks }}
+    >
       {props.children}
     </UserContext.Provider>
   )

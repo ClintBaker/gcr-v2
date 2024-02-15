@@ -1,10 +1,11 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, Link } from 'react-router-dom'
 import Auth from './components/auth/Auth'
-import Profile from './components/Profile'
+import Profile from './components/profile/Profile'
 import ProtectedRoute from './components/ProtectedRoute'
 import './components/css//new/main.css'
 import { UserContext } from './context/UserProvider'
 import { useContext } from 'react'
+import Courses from './components/courses/Courses'
 
 function App() {
   // get context
@@ -13,11 +14,15 @@ function App() {
   return (
     <>
       <nav className="nav">
-        <h1>⛳️ Golf Course Ranker</h1>
         {/* <div>
           <Link to="/">My Ranks</Link>
           <Link to="/create">Rank New Course</Link>
         </div> */}
+        <div className="nav-left">
+          <h1>⛳️ Golf Course Ranker</h1>
+          <Link to="/profile">My Ranks</Link>
+          <Link to="/courses">Courses</Link>
+        </div>
         {token && (
           <a onClick={logout} className="link">
             Logout
@@ -31,10 +36,18 @@ function App() {
             element={token ? <Navigate to="/profile" /> : <Auth />}
           />
           <Route
-            path="profile"
+            path="/profile"
             element={
               <ProtectedRoute token={token} redirect="/">
                 <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/courses"
+            element={
+              <ProtectedRoute token={token} redirect="/">
+                <Courses />
               </ProtectedRoute>
             }
           />

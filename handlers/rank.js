@@ -5,6 +5,8 @@ export const getRanks = async (req, res, next) => {
   try {
     // get user's ranks
     const ranks = await Rank.find({ userId: req.auth._id })
+      .populate('courseId', 'name')
+      .exec()
     res.status(200).send({ message: 'Successfully retrieved ranks', ranks })
   } catch (e) {
     return next(e.message)

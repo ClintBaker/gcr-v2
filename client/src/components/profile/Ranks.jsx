@@ -1,12 +1,12 @@
-import { useEffect } from "react";
-import RankCard from "./RankCard";
-import "./css/Ranks.css";
-import { getRanks } from "../api/rank";
+import { useEffect } from 'react'
+import RankCard from '../RankCard'
+import './css/Ranks.css'
+import { getRanks } from '../../api/rank'
 
 export default function Ranks({ ranks, setRanks }) {
   useEffect(() => {
-    getRanks(setRanks);
-  }, []);
+    getRanks(setRanks)
+  }, [])
   return (
     <div className="ranks--container">
       <div className="heading">
@@ -18,5 +18,5 @@ export default function Ranks({ ranks, setRanks }) {
         ))}
       </div>
     </div>
-  );
+  )
 }
