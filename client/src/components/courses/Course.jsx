@@ -1,11 +1,14 @@
-import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Course({ course }) {
-  useEffect(() => {
-    console.log(course)
-  }, [])
+  const navigate = useNavigate()
+
+  function handleRank() {
+    navigate(`/create/${course._id}`)
+  }
+
   return (
-    <div className="container rank--card">
+    <div className="container course--card">
       <h2>{course.name}</h2>
       <h5>Location: {course.location}</h5>
       <span>Green Quality: {course.greenQuality}</span>
@@ -15,7 +18,7 @@ export default function Course({ course }) {
       <span>Views: {course.views}</span>
       <span>Service: {course.service}</span>
       <h4>Score: {course.score}</h4>
-      <button>Rank this course</button>
+      <button onClick={handleRank}>Rank this course</button>
     </div>
   )
 }

@@ -1,0 +1,20 @@
+.course--card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 30px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  background-color: white;
+  border-radius: 3px;
+  margin: 10px;
+  width: 250px;
+  transition: 50ms linear;
+}
+
+.course--card * {
+  margin: 1.5px;
+}
+
+.course--card h4 {
+  color: var(--green);
+}

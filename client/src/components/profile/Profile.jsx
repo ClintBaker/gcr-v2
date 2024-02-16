@@ -21,6 +21,11 @@ export default function Profile() {
         <div className="ranks">
           {ranks &&
             ranks.map((rank) => <RankCard rank={rank} key={rank._id} />)}
+          {!ranks.length > 0 && (
+            <div style={{ marginTop: '25px' }}>
+              You don't currently have any ranks. Start ranking!
+            </div>
+          )}
         </div>
       </div>
     </div>
