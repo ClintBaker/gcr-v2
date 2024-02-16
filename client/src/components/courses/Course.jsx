@@ -18,6 +18,7 @@ export default function Course({ course }) {
       <span>Views: {Math.round(course.views)}</span>
       <span>Service: {Math.round(course.service)}</span>
       <h4>Score: {Math.round(course.score)}</h4>
+      <h5>Total Ranks: {course.totalRanks}</h5>
       <button onClick={handleRank}>Rank this course</button>
     </div>
   )

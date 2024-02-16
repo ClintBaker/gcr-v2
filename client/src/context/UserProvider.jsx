@@ -84,8 +84,12 @@ export default function UserProvider(props) {
   }
 
   async function getCourses() {
+    // get courses
     const courses = await userAxios.get(`/app/api/course`)
-    setCourses(courses.data.courses)
+    // sort the course
+    const sortedCourses = courses.data.courses.sort((a, b) => b.score - a.score)
+    // set state
+    setCourses(sortedCourses)
   }
 
   async function createRank(formData) {

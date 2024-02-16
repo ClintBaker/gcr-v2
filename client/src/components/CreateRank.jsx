@@ -5,7 +5,7 @@ import { UserContext } from '../context/UserProvider'
 
 export default function CreateRank() {
   const navigate = useNavigate()
-  const { createRank } = useContext(UserContext)
+  const { createRank, editRank, getRanks, ranks } = useContext(UserContext)
 
   const { courseName, courseId } = useParams()
 
@@ -19,6 +19,11 @@ export default function CreateRank() {
     service: 5,
   })
 
+  // get user ranks on load to reconcile if edit or create
+  useEffect(() => {
+    getRanks()
+  }, [])
+
   function handleChange(e) {
     const { name, value } = e.target
 
@@ -27,8 +32,16 @@ export default function CreateRank() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    createRank(formData)
-    navigate('/profile')
+    // editRank(id, formData)
+    const ranked = ranks.find((rank) => rank.courseId._id === courseId)
+
+    if (ranked) {
+      editRank(ranked._id, formData)
+      navigate('/profile')
+    } else {
+      createRank(formData)
+      navigate('/profile')
+    }
   }
 
   return (

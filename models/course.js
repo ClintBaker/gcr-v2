@@ -49,8 +49,6 @@ courseSchema.methods.updateTotals = async function () {
       cv.views = cv.views / ranks.length
       cv.service = cv.service / ranks.length
       cv.score = cv.score / ranks.length
-
-      console.log(cv)
       //   apply to new saved item
       this.greenQuality = cv.greenQuality
       this.proShop = cv.proShop
