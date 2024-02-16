@@ -1,3 +1,17 @@
+import { useContext, useEffect } from 'react'
+import { UserContext } from '../../context/UserProvider'
+import Course from './Course'
+
 export default function Courses() {
-  return <div>COURSES PAGE</div>
+  const { getCourses, courses } = useContext(UserContext)
+
+  useEffect(() => {
+    getCourses()
+  }, [])
+  return (
+    <div>
+      {courses &&
+        courses.map((course) => <Course course={course} key={course._id} />)}
+    </div>
+  )
 }

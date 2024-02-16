@@ -22,6 +22,7 @@ export default function UserProvider(props) {
   // userState
   const [userState, setUserState] = useState(initState)
   const [rank, setRank] = useState('loading')
+  const [courses, setCourses] = useState([])
 
   //   functions
   async function signup(credentials) {
@@ -82,6 +83,11 @@ export default function UserProvider(props) {
     setRank(rank.data.rank)
   }
 
+  async function getCourses() {
+    const courses = await userAxios.get(`/app/api/course`)
+    setCourses(courses.data.courses)
+  }
+
   return (
     <UserContext.Provider
       value={{
@@ -92,6 +98,8 @@ export default function UserProvider(props) {
         getRanks,
         getOneRank,
         rank,
+        getCourses,
+        courses,
       }}
     >
       {props.children}

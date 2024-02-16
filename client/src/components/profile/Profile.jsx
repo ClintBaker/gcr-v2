@@ -19,9 +19,8 @@ export default function Profile() {
           <h3>My Ranks</h3>
         </div>
         <div className="ranks">
-          {ranks.map((rank) => (
-            <RankCard rank={rank} key={rank._id} />
-          ))}
+          {ranks &&
+            ranks.map((rank) => <RankCard rank={rank} key={rank._id} />)}
         </div>
       </div>
     </div>
