@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { deleteRank, editRank, getRankById } from '../api/rank'
 import './css/Rank.css'
 import { UserContext } from '../context/UserProvider'
 
@@ -8,7 +7,7 @@ export default function Rank() {
   const { rankId } = useParams()
 
   // use context
-  const { rank, getOneRank } = useContext(UserContext)
+  const { rank, getOneRank, editRank, deleteRank } = useContext(UserContext)
   const [toggleEdit, setToggleEdit] = useState(false)
   const [formData, setFormData] = useState({})
 
@@ -20,7 +19,8 @@ export default function Rank() {
   }, [])
 
   function handleDelete() {
-    deleteRank(navigate, id)
+    deleteRank(rankId)
+    navigate('/profile')
   }
 
   function handleEdit() {
@@ -29,7 +29,7 @@ export default function Rank() {
   }
 
   function handleSubmit() {
-    editRank(setRank, id, formData, setFormData)
+    editRank(rankId, formData)
     setToggleEdit(false)
   }
 

@@ -4,20 +4,20 @@ export default function Course({ course }) {
   const navigate = useNavigate()
 
   function handleRank() {
-    navigate(`/create/${course._id}`)
+    navigate(`/create/${course._id}/${course.name}`)
   }
 
   return (
     <div className="container course--card">
       <h2>{course.name}</h2>
       <h5>Location: {course.location}</h5>
-      <span>Green Quality: {course.greenQuality}</span>
-      <span>Pro Shop: {course.proShop}</span>
-      <span>Weather: {course.weather}</span>
-      <span>Difficulty: {course.difficulty}</span>
-      <span>Views: {course.views}</span>
-      <span>Service: {course.service}</span>
-      <h4>Score: {course.score}</h4>
+      <span>Green Quality: {Math.round(course.greenQuality)}</span>
+      <span>Pro Shop: {Math.round(course.proShop)}</span>
+      <span>Weather: {Math.round(course.weather)}</span>
+      <span>Difficulty: {Math.round(course.difficulty)}</span>
+      <span>Views: {Math.round(course.views)}</span>
+      <span>Service: {Math.round(course.service)}</span>
+      <h4>Score: {Math.round(course.score)}</h4>
       <button onClick={handleRank}>Rank this course</button>
     </div>
   )

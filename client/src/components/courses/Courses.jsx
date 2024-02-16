@@ -10,9 +10,12 @@ export default function Courses() {
     getCourses()
   }, [])
   return (
-    <div>
-      {courses &&
-        courses.map((course) => <Course course={course} key={course._id} />)}
+    <div className="courses-container">
+      <h2 style={{ marginBottom: '25px' }}>Courses</h2>
+      <div className="courses">
+        {courses &&
+          courses.map((course) => <Course course={course} key={course._id} />)}
+      </div>
     </div>
   )
 }

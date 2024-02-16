@@ -1,13 +1,16 @@
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './css/create.css'
-import { useNavigate } from 'react-router-dom'
-import { createRank } from '../api/rank'
+import { useNavigate, useParams } from 'react-router-dom'
+import { UserContext } from '../context/UserProvider'
 
 export default function CreateRank() {
   const navigate = useNavigate()
+  const { createRank } = useContext(UserContext)
+
+  const { courseName, courseId } = useParams()
 
   const [formData, setFormData] = useState({
-    courseName: '',
+    courseId,
     greenQuality: 5,
     proShop: 5,
     weather: 5,
@@ -24,23 +27,14 @@ export default function CreateRank() {
 
   function handleSubmit(e) {
     e.preventDefault()
-
-    createRank(navigate, formData)
+    createRank(formData)
+    navigate('/profile')
   }
 
   return (
     <div className="create--container">
-      <h2>Rank New Course</h2>
+      <h2>Rank {courseName}</h2>
       <form onSubmit={handleSubmit} className="create--form">
-        <div>
-          <label>Course Name</label>
-          <input
-            className="input--big"
-            name="courseName"
-            value={formData.courseName}
-            onChange={handleChange}
-          />
-        </div>
         <div className="form--collection">
           <div>
             <label>Green Quality</label>

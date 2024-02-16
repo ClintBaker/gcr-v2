@@ -19,49 +19,63 @@ courseSchema.methods.updateTotals = async function () {
   try {
     //   define an array of all ranks for this course
     const ranks = await Rank.find({ courseId: this._id })
-    //  define composite values
-    let cv = {
-      greenQuality: 0,
-      proShop: 0,
-      weather: 0,
-      difficulty: 0,
-      views: 0,
-      service: 0,
-      score: 0,
-    }
-    // loop and increment & divide by multiplier
-    ranks.forEach((rank) => {
-      cv.greenQuality = cv.greenQuality + rank.greenQuality
-      cv.proShop = cv.proShop + rank.proShop
-      cv.weather = cv.weather + rank.weather
-      cv.difficulty = cv.difficulty + rank.difficulty
-      cv.views = cv.views + rank.views
-      cv.service = cv.service + rank.service
-      cv.score = cv.score + rank.score
-    })
-    //   divide by multiplier
-    cv.greenQuality = cv.greenQuality / ranks.length
-    cv.proShop = cv.proShop / ranks.length
-    cv.weather = cv.weather / ranks.length
-    cv.difficulty = cv.difficulty / ranks.length
-    cv.views = cv.views / ranks.length
-    cv.service = cv.service / ranks.length
-    cv.score = cv.score / ranks.length
-    //   apply to new saved item
-    this.greenQuality = cv.greenQuality
-    this.proShop = cv.proShop
-    this.weather = cv.weather
-    this.difficulty = cv.difficulty
-    this.views = cv.views
-    this.service = cv.service
-    this.totalRanks = ranks.length
-    this.score = cv.score
-    //   move along
-    try {
-      await this.save()
-      return 'Success'
-    } catch (e) {
-      return e.message
+
+    if (ranks.length > 0) {
+      //  define composite values
+      let cv = {
+        greenQuality: 0,
+        proShop: 0,
+        weather: 0,
+        difficulty: 0,
+        views: 0,
+        service: 0,
+        score: 0,
+      }
+      // loop and increment & divide by multiplier
+      ranks.forEach((rank) => {
+        cv.greenQuality = cv.greenQuality + rank.greenQuality
+        cv.proShop = cv.proShop + rank.proShop
+        cv.weather = cv.weather + rank.weather
+        cv.difficulty = cv.difficulty + rank.difficulty
+        cv.views = cv.views + rank.views
+        cv.service = cv.service + rank.service
+        cv.score = cv.score + rank.score
+      })
+      //   divide by multiplier
+      cv.greenQuality = cv.greenQuality / ranks.length
+      cv.proShop = cv.proShop / ranks.length
+      cv.weather = cv.weather / ranks.length
+      cv.difficulty = cv.difficulty / ranks.length
+      cv.views = cv.views / ranks.length
+      cv.service = cv.service / ranks.length
+      cv.score = cv.score / ranks.length
+
+      console.log(cv)
+      //   apply to new saved item
+      this.greenQuality = cv.greenQuality
+      this.proShop = cv.proShop
+      this.weather = cv.weather
+      this.difficulty = cv.difficulty
+      this.views = cv.views
+      this.service = cv.service
+      this.totalRanks = ranks.length
+      this.score = cv.score
+      //   move along
+      try {
+        await this.save()
+        return 'Success'
+      } catch (e) {
+        return e.message
+      }
+    } else {
+      this.greenQuality = 0
+      this.proShop = 0
+      this.weather = 0
+      this.difficulty = 0
+      this.views = 0
+      this.service = 0
+      this.totalRanks = 0
+      this.score = 0
     }
   } catch (e) {
     return e.message

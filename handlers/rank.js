@@ -68,13 +68,14 @@ export const editRank = async (req, res, next) => {
       rank[key] = req.body[key]
     })
 
+    // return the updatedRank
+    const updatedRank = await rank.save()
+
     // locate the course to associate
     const rankCourse = await Course.findOne({ _id: rank.courseId })
     // update composite numbers for course
     const update = await rankCourse.updateTotals()
 
-    // return the updatedRank
-    const updatedRank = await rank.save()
     res
       .status(200)
       .send({ message: 'Successfully updated rank', rank: updatedRank })

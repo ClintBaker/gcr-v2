@@ -88,6 +88,32 @@ export default function UserProvider(props) {
     setCourses(courses.data.courses)
   }
 
+  async function createRank(formData) {
+    const rank = await userAxios.post(`/app/api/rank`, formData)
+
+    if (rank.status !== 200) {
+      console.log('ERROR')
+    }
+  }
+
+  async function editRank(rankId, formData) {
+    const data = {
+      greenQuality: formData.greenQuality,
+      proShop: formData.proShop,
+      weather: formData.weather,
+      difficulty: formData.difficulty,
+      views: formData.views,
+      service: formData.service,
+    }
+    const editedRank = await userAxios.put(`/app/api/rank/${rankId}`, data)
+    setRank(editedRank.data.rank)
+  }
+
+  async function deleteRank(rankId) {
+    const deletedRank = await userAxios.delete(`app/api/rank/${rankId}`)
+    console.log('DELETED RANK')
+  }
+
   return (
     <UserContext.Provider
       value={{
@@ -100,6 +126,9 @@ export default function UserProvider(props) {
         rank,
         getCourses,
         courses,
+        createRank,
+        editRank,
+        deleteRank,
       }}
     >
       {props.children}

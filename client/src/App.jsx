@@ -7,6 +7,7 @@ import { UserContext } from './context/UserProvider'
 import { useContext } from 'react'
 import Courses from './components/courses/Courses'
 import Rank from './components/Rank'
+import CreateRank from './components/CreateRank'
 
 function App() {
   // get context
@@ -57,6 +58,14 @@ function App() {
             element={
               <ProtectedRoute token={token} redirect="/">
                 <Rank />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/create/:courseId/:courseName"
+            element={
+              <ProtectedRoute token={token} redirect="/">
+                <CreateRank />
               </ProtectedRoute>
             }
           />
