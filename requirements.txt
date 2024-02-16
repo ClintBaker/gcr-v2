@@ -1,7 +1,8 @@
 TODO:
 4. CLIENT
     - //DONE Protect views 
-        - Profile - MY RANKS
+        - //DONE Profile - MY RANKS
+        - Individual ranks
         - Courses (all courses)
         - //DONE Logout
     - Provide a courseId for ranks

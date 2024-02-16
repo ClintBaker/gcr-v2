@@ -2,16 +2,6 @@ import axios from 'axios'
 
 const url = '/rank'
 
-export const getRanks = async (setRanks) => {
-  const ranks = await axios.get(`${url}`)
-
-  if (ranks.status === 200) {
-    setRanks(ranks.data.data)
-  } else {
-    alert('Unable to get ranks')
-  }
-}
-
 export const getRankById = async (setRank, setFormData, id) => {
   const rank = await axios.get(`${url}/${id}`)
 

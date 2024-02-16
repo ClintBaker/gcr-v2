@@ -20,6 +20,8 @@ export const getOneRank = async (req, res, next) => {
       _id: req.params.id,
       userId: req.auth._id,
     })
+      .populate('courseId', 'name')
+      .exec()
     // if unable to find send error
     if (!rank) {
       res.status(404)

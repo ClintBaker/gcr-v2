@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { deleteRank, editRank, getRankById } from '../api/rank'
 import './css/Rank.css'
+import { UserContext } from '../context/UserProvider'
 
 export default function Rank() {
-  const { id } = useParams()
+  const { rankId } = useParams()
 
-  const [rank, setRank] = useState('loading')
+  // use context
+  const { rank, getOneRank } = useContext(UserContext)
   const [toggleEdit, setToggleEdit] = useState(false)
   const [formData, setFormData] = useState({})
 
@@ -14,7 +16,7 @@ export default function Rank() {
 
   useEffect(() => {
     // on load get rank
-    getRankById(setRank, setFormData, id)
+    getOneRank(rankId)
   }, [])
 
   function handleDelete() {
@@ -42,7 +44,7 @@ export default function Rank() {
       {!rank && <div>404 - Unable to find Rank</div>}
       {rank && rank !== 'loading' && !toggleEdit && (
         <div className="rank--main">
-          <h2>{rank.courseName}</h2>
+          <h2>{rank.courseId.name}</h2>
           <div className="rank--btns">
             <button onClick={handleEdit}>Edit</button>
             <button onClick={handleDelete}>Delete</button>
@@ -61,7 +63,7 @@ export default function Rank() {
 
       {rank && rank !== 'loading' && toggleEdit && (
         <div className="rank--main">
-          <h2>{rank.courseName}</h2>
+          <h2>{rank.courseId.name}</h2>
           <div className="rank--btns">
             <button onClick={handleEdit}>Cancel</button>
             <button onClick={handleSubmit}>Submit</button>

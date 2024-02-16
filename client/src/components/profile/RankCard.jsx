@@ -4,7 +4,7 @@ import '../css/RankCard.css'
 export default function RankCard({ rank }) {
   const navigate = useNavigate()
   function handleClick() {
-    navigate(`/${rank._id}`)
+    navigate(`/rank/${rank._id}`)
   }
 
   return (
