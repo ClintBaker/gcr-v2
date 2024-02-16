@@ -3,10 +3,12 @@ TODO:
     - //DONE Protect views 
         - //DONE Profile - MY RANKS
         - Individual ranks
+            - Edit & Delete
         - Courses (all courses)
+            - Rank a course / create a new ranking
         - //DONE Logout
-    - Provide a courseId for ranks
-        - Make sure everything works smoothly with the new API
+5. OPTIMIZE STYLING
+    - Make things look cleaner throughout
 
 DONE:
 1. //DONE Authentication
