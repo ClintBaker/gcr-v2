@@ -9,6 +9,10 @@ import Courses from './components/courses/Courses'
 import Rank from './components/Rank'
 import CreateRank from './components/CreateRank'
 
+// stylesheets
+import './components/css/Rank.css'
+import './components/css/Ranks.css'
+
 function App() {
   // get context
   const { token, user, logout } = useContext(UserContext)
