@@ -8,6 +8,10 @@ import authRouter from './routes/auth.js'
 import rankRouter from './routes/rank.js'
 import courseRouter from './routes/course.js'
 
+// import tools to handle static react app
+import path from 'path'
+const __dirname = path.resolve()
+
 const app = express()
 
 // call function to connect to DB
@@ -21,6 +25,8 @@ async function main() {
 // middleware
 app.use(morgan('dev'))
 app.use(express.json())
+// static react app
+app.use(express.static(path.join(__dirname, 'client', 'dist')))
 
 // protect
 app.use(
@@ -38,6 +44,11 @@ app.use('/app/api/course', courseRouter)
 app.use((err, req, res, next) => {
   console.log(err)
   res.send({ message: 'ERROR', error: err.message })
+})
+
+// static react app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'))
 })
 
 const PORT = process.env.PORT || 9000
