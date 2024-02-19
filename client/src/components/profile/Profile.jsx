@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react'
 import { UserContext } from '../../context/UserProvider'
 import RankCard from './RankCard'
 import './profile.css'
+// make sure capitalization is correct
 import '../css/rank.css'
 import '../css/ranks.css'
 
