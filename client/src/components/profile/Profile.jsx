@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react'
 import { UserContext } from '../../context/UserProvider'
 import RankCard from './RankCard'
 import './profile.css'
+import { Link } from 'react-router-dom'
 
 export default function Profile() {
   // user context
@@ -22,8 +23,18 @@ export default function Profile() {
           {ranks &&
             ranks.map((rank) => <RankCard rank={rank} key={rank._id} />)}
           {!ranks.length > 0 && (
-            <div style={{ marginTop: '25px' }}>
-              You don't currently have any ranks. Start ranking!
+            <div
+              style={{
+                marginTop: '25px',
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              <p>
+                You don't currently have any ranks.{'   '}
+                <Link to="/courses"> Start ranking!</Link>
+              </p>
             </div>
           )}
         </div>
